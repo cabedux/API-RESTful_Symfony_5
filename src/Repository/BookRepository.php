@@ -50,42 +50,15 @@ class BookRepository extends ServiceEntityRepository
     public function findAllLowerThanYear(int $year): array
     {
 
-        $query = $this->createQueryBuilder('p')
-            ->where('YEAR(p.published) < :year')
+        $query = $this->createQueryBuilder('book')
+            ->where('YEAR(book.published) < :year')
             ->setParameter('year', $year)
-            ->orderBy('p.published', 'ASC');
+            ->orderBy('book.published', 'ASC');
         
         $response = $query->getQuery();
 
         return $response->execute();
     }
 
-    // /**
-    //  * @return Book[] Returns an array of Book objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Book
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+    
 }

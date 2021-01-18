@@ -39,7 +39,7 @@ class BookController
 
         $this->bookRepository->saveBook($data);
 
-        return new JsonResponse(['status' => 'Book created!'], Response::HTTP_CREATED);
+        return new JsonResponse(['status' => '201'], Response::HTTP_CREATED);
     }
 
     /**
@@ -61,7 +61,8 @@ class BookController
                 'pages' => $book->getPages(),
                 'description' => $book->getDescription(),
                 'website' => $book->getWebsite(),
-                'category' => $book->getCategory()
+                'category' => $book->getCategory(),
+                'author' => $book->getAuthor()
             ];
         }
 
@@ -85,7 +86,8 @@ class BookController
             'pages' => $book->getPages(),
             'description' => $book->getDescription(),
             'website' => $book->getWebsite(),
-            'category' => $book->getCategory()
+            'category' => $book->getCategory(),
+            'author' => $book->getAuthor()
         ];
 
         return new JsonResponse($data, Response::HTTP_OK);
@@ -110,7 +112,8 @@ class BookController
                 'pages' => $book->getPages(),
                 'description' => $book->getDescription(),
                 'website' => $book->getWebsite(),
-                'category' => $book->getCategory()
+                'category' => $book->getCategory(),
+                'author' => $book->getAuthor()
             ];
         }
         return new JsonResponse($data, Response::HTTP_OK);
@@ -125,7 +128,7 @@ class BookController
 
         $this->bookRepository->removeBook($book);
 
-        return new JsonResponse(['status' => 'Book deleted'], Response::HTTP_OK);
+        return new JsonResponse(['status' => 200], Response::HTTP_OK);
     }
 
      /**
@@ -147,7 +150,8 @@ class BookController
                 'pages' => $book->getPages(),
                 'description' => $book->getDescription(),
                 'website' => $book->getWebsite(),
-                'category' => $book->getCategory()
+                'category' => $book->getCategory(),
+                'author' => $book->getAuthor()
             ];
         }
 
